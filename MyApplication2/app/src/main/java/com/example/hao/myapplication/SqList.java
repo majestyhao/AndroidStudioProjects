@@ -32,7 +32,7 @@ public class SqList {
                 Log.d(UsualStrings.LOG_TAG, UsualStrings.OUT_BOUNDARY);
                 System.exit(0);
             }
-                return data[index - 1];
+            return data[index - 1];
 
         } catch (NullPointerException exception) {
             Log.d(UsualStrings.LOG_TAG, UsualStrings.NULL_POINTER);
@@ -41,12 +41,10 @@ public class SqList {
         } catch (IndexOutOfBoundsException exception) {
             Log.d(UsualStrings.LOG_TAG, UsualStrings.OUT_BOUNDARY);
             Log.d(UsualStrings.LOG_TAG, exception.getMessage());
-            System.exit(0);
             throw exception;
         } catch (Exception exception) {
             Log.d(UsualStrings.LOG_TAG, UsualStrings.UNKNOWN_EXCEPTION);
             Log.d(UsualStrings.LOG_TAG, exception.getMessage());
-            System.exit(0);
             throw exception;
         }
     }
@@ -60,12 +58,12 @@ public class SqList {
             if (length == MAXSIZE) {
                 MAXSIZE++;
                 int tmp[] = new int[MAXSIZE];
-                for (int i = 0; i <= MAXSIZE - 1; i++) {
+                for (int i = 0; i <= length - 1; i++) {
                     tmp[i] = data[i];
                 }
                 data = tmp;
             } else {
-                for (int i = length - 1; i >= index - 1; i--) {
+                for (int i = length - 1; i > index - 1; i--) {
                     data[i + 1] = data[i];
                 }
                 data[index - 1] = elem;
@@ -79,12 +77,42 @@ public class SqList {
         } catch (IndexOutOfBoundsException exception) {
             Log.d(UsualStrings.LOG_TAG, UsualStrings.OUT_BOUNDARY);
             Log.d(UsualStrings.LOG_TAG, exception.getMessage());
-            System.exit(0);
             throw exception;
         } catch (Exception exception) {
             Log.d(UsualStrings.LOG_TAG, UsualStrings.UNKNOWN_EXCEPTION);
             Log.d(UsualStrings.LOG_TAG, exception.getMessage());
-            System.exit(0);
+            throw exception;
+        } finally {
+            return false;
+        }
+    }
+
+    boolean insertElem(int elem) {
+        try {
+            if (length == MAXSIZE) {
+                MAXSIZE++;
+                int tmp[] = new int[MAXSIZE];
+                for (int i = 0; i <= length - 1; i++) {
+                    tmp[i] = data[i];
+                }
+                data = tmp;
+            }
+
+            data[length] = elem;
+            length++;
+
+            return true;
+        } catch (NullPointerException exception) {
+            Log.d(UsualStrings.LOG_TAG, UsualStrings.NULL_POINTER);
+            Log.d(UsualStrings.LOG_TAG, exception.getMessage());
+            throw exception;
+        } catch (IndexOutOfBoundsException exception) {
+            Log.d(UsualStrings.LOG_TAG, UsualStrings.OUT_BOUNDARY);
+            Log.d(UsualStrings.LOG_TAG, exception.getMessage());
+            throw exception;
+        } catch (Exception exception) {
+            Log.d(UsualStrings.LOG_TAG, UsualStrings.UNKNOWN_EXCEPTION);
+            Log.d(UsualStrings.LOG_TAG, exception.getMessage());
             throw exception;
         } finally {
             return false;
@@ -98,7 +126,7 @@ public class SqList {
     int delElem(int index) {
         /* del the element and return the value */
         try {
-            if (index  > length || length == 0) {
+            if (index > length || length == 0) {
                 Log.d(UsualStrings.LOG_TAG, UsualStrings.OUT_BOUNDARY);
                 System.exit(0);
             }
@@ -115,12 +143,10 @@ public class SqList {
         } catch (IndexOutOfBoundsException exception) {
             Log.d(UsualStrings.LOG_TAG, UsualStrings.OUT_BOUNDARY);
             Log.d(UsualStrings.LOG_TAG, exception.getMessage());
-            System.exit(0);
             throw exception;
         } catch (Exception exception) {
             Log.d(UsualStrings.LOG_TAG, UsualStrings.UNKNOWN_EXCEPTION);
             Log.d(UsualStrings.LOG_TAG, exception.getMessage());
-            System.exit(0);
             throw exception;
         }
     }
@@ -142,12 +168,10 @@ public class SqList {
         } catch (IndexOutOfBoundsException exception) {
             Log.d(UsualStrings.LOG_TAG, UsualStrings.OUT_BOUNDARY);
             Log.d(UsualStrings.LOG_TAG, exception.getMessage());
-            System.exit(0);
             throw exception;
         } catch (Exception exception) {
             Log.d(UsualStrings.LOG_TAG, UsualStrings.UNKNOWN_EXCEPTION);
             Log.d(UsualStrings.LOG_TAG, exception.getMessage());
-            System.exit(0);
             throw exception;
         }
     }
